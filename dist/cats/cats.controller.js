@@ -8,12 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CatsController = void 0;
 const common_1 = require("@nestjs/common");
+const cats_service_1 = require("./cats.service");
 let CatsController = class CatsController {
+    constructor(catService) {
+        this.catService = catService;
+    }
     cats() {
-        return ['cat1', 'cat2', 'cat3', 'cat4', 'cat5'];
+        return this.catService.getCats();
+    }
+    oneCat(name) {
+        return this.catService.getOneCat(name);
     }
 };
 __decorate([
@@ -22,8 +32,16 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Object)
 ], CatsController.prototype, "cats", null);
+__decorate([
+    (0, common_1.Get)('cat'),
+    __param(0, (0, common_1.Query)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Object)
+], CatsController.prototype, "oneCat", null);
 CatsController = __decorate([
-    (0, common_1.Controller)('cats')
+    (0, common_1.Controller)('cats'),
+    __metadata("design:paramtypes", [cats_service_1.CatsService])
 ], CatsController);
 exports.CatsController = CatsController;
 //# sourceMappingURL=cats.controller.js.map

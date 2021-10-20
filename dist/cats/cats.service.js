@@ -9,8 +9,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CatsService = void 0;
 const common_1 = require("@nestjs/common");
 let CatsService = class CatsService {
+    constructor() {
+        this.catsList = {
+            cat1: { name: 'cat1', age: 1 },
+            cat2: { name: 'cat2', age: 2 },
+            cat3: { name: 'cat3', age: 3 }
+        };
+    }
     getCats() {
-        return 'cats';
+        return this.catsList;
+    }
+    getOneCat(key) {
+        return this.catsList[key];
     }
 };
 CatsService = __decorate([

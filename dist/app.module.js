@@ -12,12 +12,13 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const cats_controller_1 = require("./cats/cats.controller");
 const cats_service_1 = require("./cats/cats.service");
+const redirect_controller_1 = require("./redirect/redirect.controller");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [],
-        controllers: [app_controller_1.AppController, cats_controller_1.CatsController],
+        controllers: [app_controller_1.AppController, cats_controller_1.CatsController, redirect_controller_1.RedirectController],
         providers: [app_service_1.AppService, cats_service_1.CatsService],
     })
 ], AppModule);
